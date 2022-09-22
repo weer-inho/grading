@@ -2,6 +2,7 @@ import { ThemeProvider } from 'styled-components';
 import {
   Switch,
   Route,
+  Link,
   BrowserRouter as Router,
 } from 'components/common/common';
 import DetailedQuest from 'components/detailed-quest/detailed-quest';
@@ -15,14 +16,24 @@ const App = () => (
     <S.GlobalStyle />
     <Router>
       <Switch>
-        <Route exact path="/quest">
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/quest">
           <DetailedQuest />
         </Route>
-        <Route exact path="/contacts">
+        <Route path="/contacts">
           <Contacts />
         </Route>
-        <Route path="/">
-          <Home />
+        <Route path="/*">
+          <>
+            <h1>
+              404.
+              <br />
+              <small>Page not found</small>
+            </h1>
+            <Link to="/">go to main page</Link>
+          </>
         </Route>
       </Switch>
     </Router>
